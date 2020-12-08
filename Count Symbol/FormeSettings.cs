@@ -11,14 +11,15 @@ namespace Count_Symbol
 {
     public partial class FormSettings : Form
     {
-        string pathApp;
-        int valueLimitWords;
         string symbolSettings;
 
         public FormSettings()
         {
             InitializeComponent();
-            using (FileStream fstream = File.OpenRead("valueLimitWords.txt")) //Чтение из файла 
+            //
+            int valueLimitWords;
+            //
+            using (FileStream fstream = File.OpenRead("valueLimitWords.txt")) 
             {
                 byte[] array = new byte[fstream.Length];
                 fstream.Read(array, 0, array.Length);
@@ -27,20 +28,15 @@ namespace Count_Symbol
                 trackBar1.Value = valueLimitWords;
                 fstream.Close();
             }
-            using (FileStream fstream = File.OpenRead("path.txt")) //Чтение из файла 
-            {
-                byte[] array = new byte[fstream.Length];
-                fstream.Read(array, 0, array.Length);
-                pathApp = Encoding.Default.GetString(array);
-                fstream.Close();
-            }
-            using (FileStream fstream = File.OpenRead("symbolSettings.txt")) //Чтение из файла 
+            //
+            using (FileStream fstream = File.OpenRead("symbolSettings.txt")) 
             {
                 byte[] array = new byte[fstream.Length];
                 fstream.Read(array, 0, array.Length);
                 symbolSettings = Encoding.Default.GetString(array);
                 fstream.Close();
             }
+            //
             switch (symbolSettings)
             {
                 case "RButton1-CBoxTrue":
@@ -77,39 +73,39 @@ namespace Count_Symbol
             {
                 if(checkBox1.Checked)
                 {
-                    File.Delete(pathApp + @"symbolSettings.txt");
-                    File.AppendAllText(pathApp + @"symbolSettings.txt", "RButton1-CBoxTrue");
+                    File.Delete(@"symbolSettings.txt");
+                    File.AppendAllText(@"symbolSettings.txt", "RButton1-CBoxTrue");
                 }
                 else
                 {
-                    File.Delete(pathApp + @"symbolSettings.txt");
-                    File.AppendAllText(pathApp + @"symbolSettings.txt", "RButton1-CBoxFalse");
+                    File.Delete(@"symbolSettings.txt");
+                    File.AppendAllText(@"symbolSettings.txt", "RButton1-CBoxFalse");
                 }
             }
             else if (radioButton2.Checked)
             {
                 if (checkBox1.Checked)
                 {
-                    File.Delete(pathApp + @"symbolSettings.txt");
-                    File.AppendAllText(pathApp + @"\symbolSettings.txt", "RButton2-CBoxTrue");
+                    File.Delete(@"symbolSettings.txt");
+                    File.AppendAllText(@"\symbolSettings.txt", "RButton2-CBoxTrue");
                 }
                 else
                 {
-                    File.Delete(pathApp + @"symbolSettings.txt");
-                    File.AppendAllText(pathApp + @"symbolSettings.txt", "RButton2-CBoxFalse");
+                    File.Delete(@"symbolSettings.txt");
+                    File.AppendAllText(@"symbolSettings.txt", "RButton2-CBoxFalse");
                 }
             }
             else if (radioButton3.Checked)
             {
                 if (checkBox1.Checked)
                 {
-                    File.Delete(pathApp + @"symbolSettings.txt");
-                    File.AppendAllText(pathApp + @"symbolSettings.txt", "RButton3-CBoxTrue");
+                    File.Delete(@"symbolSettings.txt");
+                    File.AppendAllText(@"symbolSettings.txt", "RButton3-CBoxTrue");
                 }
                 else
                 {
-                    File.Delete(pathApp + @"symbolSettings.txt");
-                    File.AppendAllText(pathApp + @"symbolSettings.txt", "RButton3-CBoxFalse"); 
+                    File.Delete(@"symbolSettings.txt");
+                    File.AppendAllText(@"symbolSettings.txt", "RButton3-CBoxFalse"); 
                 }
             }
             label4.Visible = true;
@@ -123,11 +119,10 @@ namespace Count_Symbol
 
         private void button2_Click(object sender, EventArgs e)
         {
-            File.Delete(pathApp + @"valueLimitWords.txt");
-            File.AppendAllText(pathApp + @"valueLimitWords.txt", symbolSettings);
+            File.Delete(@"valueLimitWords.txt");
+            File.AppendAllText(@"valueLimitWords.txt", symbolSettings);
             button2.Enabled = false;
             label3.Visible = true;
         }
-
     }
 }

@@ -48,10 +48,10 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(94, 107);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(152, 14);
+            this.linkLabel1.Size = new System.Drawing.Size(46, 14);
             this.linkLabel1.TabIndex = 9;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Максим Жданов (Crypt0r)";
+            this.linkLabel1.Text = "3x0d2s";
             this.linkLabel1.Click += new System.EventHandler(this.linkLabel1_Click);
             // 
             // label3
